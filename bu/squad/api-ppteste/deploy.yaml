@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-ppteste
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-ppteste
+
+  template:
+    metadata:
+      labels:
+        app: api-ppteste
+
+    spec:
+      containers:
+        - name: api-ppteste
+          image: paulopires/api-ppteste:23e6ce9c9058489011715fb77cbd661ccf3df32c
+          ports:
+            - containerPort: 8080
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+            limits:
+              cpu: 500m
+              memory: 256Mi
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+
