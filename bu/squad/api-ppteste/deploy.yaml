@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: api-ppteste
-          image: paulopires/api-ppteste:23e6ce9c9058489011715fb77cbd661ccf3df32c
+	  image: betapenguin/demoapp-color:red
+#          image: paulopires/api-ppteste:23e6ce9c9058489011715fb77cbd661ccf3df32c
           ports:
             - containerPort: 8080
 
